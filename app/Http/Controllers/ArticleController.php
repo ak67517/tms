@@ -66,7 +66,7 @@ class ArticleController extends Controller
         $categories = $request->categories;
         $article->categories()->attach($categories);
         return redirect("articles")
-        ->with('success', 'Article created successfully!');
+        ->with('success', 'Announcement created successfully!');
     }
 
     /**
@@ -93,14 +93,12 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
-        // get the article
+       
         $article = Article::find($id);
         $categories = Category::all();
 
         $this->authorize('update', $article);
 
-        // show the edit form and pass the article
         return View::make('articles.edit')
             ->with('article',$article)
             ->with('categories', $categories);
@@ -129,7 +127,7 @@ class ArticleController extends Controller
         $article->categories()->sync($categories);
 
         return redirect("articles")
-        ->with('success', 'Article updated successfully!');
+        ->with('success', 'Announcement updated successfully!');
     }
 
     /**
@@ -146,6 +144,6 @@ class ArticleController extends Controller
         $article->delete();
 
         return redirect("articles")
-        ->with('warning', 'Article deleted successfully!');
+        ->with('warning', 'Announcement deleted successfully!');
     }
 }

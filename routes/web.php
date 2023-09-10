@@ -13,42 +13,7 @@ use App\Http\Controllers\CrowdControlController;
 use App\Http\Controllers\GoodController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
- */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::resource('articles', ArticleController::class);
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/feedback', [FeedbackController::class, 'showForm']);
-Route::post('/feedback', [FeedbackController::class, 'store']);
-Route::get('/feedback/index', [App\Http\Controllers\FeedbackController::class,'index'])->name('feedback.index');
-Route::get('/feedback/filter', [App\Http\Controllers\FeedbackController::class,'filter'])->name('feedback.filter');
-Route::patch('/feedback/markAsRead/{feedback}', [App\Http\Controllers\FeedbackController::class,'markAsRead'])->name('feedback.markAsRead');
-Route::get('/feedback/{feedback_id}', [App\Http\Controllers\FeedbackController::class,'show'])->name('feedback.show');
-
-
-Route::get('/profile', [App\Http\Controllers\UserProfileController::class, 'index'])->name('profile');
-Route::put('/profile/update', [App\Http\Controllers\UserProfileController::class, 'update'])->name('profile.update');
-Route::get('/profile1', 'UserController@index')->middleware('auth');
-
+use App\Http\Controllers\SalesController;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/leave', [App\Http\Controllers\LeaveController::class, 'index'])->name('leave.index');
@@ -72,13 +37,30 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/admin/leave/{id}/approve', 'AdminController@approveLeave')->name('admin.leave.approve');
     Route::put('/admin/leave/{id}/reject', 'AdminController@rejectLeave')->name('admin.leave.reject');
     Route::get('/admin/leave/index', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.leave.index');
+
+    
     
 });
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::resource('articles', ArticleController::class);
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/feedback', [FeedbackController::class, 'showForm']);
+Route::post('/feedback', [FeedbackController::class, 'store']);
+Route::get('/feedback/index', [App\Http\Controllers\FeedbackController::class,'index'])->name('feedback.index');
+Route::get('/feedback/filter', [App\Http\Controllers\FeedbackController::class,'filter'])->name('feedback.filter');
+Route::patch('/feedback/markAsRead/{feedback}', [App\Http\Controllers\FeedbackController::class,'markAsRead'])->name('feedback.markAsRead');
+Route::get('/feedback/{feedback_id}', [App\Http\Controllers\FeedbackController::class,'show'])->name('feedback.show');
+Route::get('/profile', [App\Http\Controllers\UserProfileController::class, 'index'])->name('profile');
+Route::put('/profile/update', [App\Http\Controllers\UserProfileController::class, 'update'])->name('profile.update');
+Route::get('/profile1', 'UserController@index')->middleware('auth');
 
 Route::get('/admin/create-job', [App\Http\Controllers\AdminController::class, 'createJob'])->name('admin.create-job');
 Route::post('/admin/store-job', [App\Http\Controllers\AdminController::class, 'storeJob'])->name('admin.store-job');
-
 Route::get('/admin/assign-jobs', [App\Http\Controllers\AdminController::class, 'assignJobs'])->name('admin.assign-jobs');
 Route::post('/admin/store-assignment', [App\Http\Controllers\AdminController::class, 'storeAssignment'])->name('admin.store-assignment');
 Route::get('/user/assigned-jobs', 'UserController@assignedJobs');
@@ -95,6 +77,14 @@ Route::get('/users', [App\Http\Controllers\UserController::class,'index'])->name
 Route::get('/user/profile/{id}', [UserProfileController::class, 'showProfile'])->name('user.profile');
 Route::get('/users/create', [UserController::class,'create'])->name('user.create');
 Route::post('/users/store', [UserController::class,'store'])->name('user.store');
+Route::get('/sales', [App\Http\Controllers\SalesController::class, 'index'])->name('sales.index');
+Route::post('/sales', [App\Http\Controllers\SalesController::class, 'store'])->name('sales.store');
+Route::get('/sales/{id}', [App\Http\Controllers\SalesController::class, 'show'])->name('sales.show');
+Route::get('/sales/{id}/edit', [App\Http\Controllers\SalesController::class, 'edit'])->name('sales.edit');
+Route::put('/sales/{id}', [App\Http\Controllers\SalesController::class, 'update'])->name('sales.update');
+
+
+
 
 
     

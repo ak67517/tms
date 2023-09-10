@@ -58,8 +58,15 @@
 
                         <div class="form-group">
                             <label for="contact">Contact Number</label>
-                            <input type="contact" id="contact" name="contact" value="{{ Auth::user()->contact }}" class="form-control" required>
+                            
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                            
+                                <span class="input-group-text">+60</span>
+                            </div>
+                            <input type="text" id="contact" name="contact" value="{{ Auth::user()->contact }}" class="form-control" required>
                         </div>
+
 
                         <br>
 

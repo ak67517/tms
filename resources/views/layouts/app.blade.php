@@ -62,7 +62,7 @@
                 @auth
                 <!-- If the user is authenticated (not a guest), show the navigation links -->
                 <ul class="navbar-nav" id="navbar-nav-left">
-                    <!-- ... (your other navigation links) ... -->
+                    
                     <ul class="navbar-nav" id="navbar-nav-left">
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -82,7 +82,7 @@
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                     <li><a class="dropdown-item" href="/goods">Goods</a></li>
                     @if (Auth::check() && Auth::user()->role == "admin")
-                    <li><a class="dropdown-item" href="#">Transaction</a></li>
+                    <li><a class="dropdown-item" href="/sales">Daily Sales</a></li>
                     @endif
                 </ul>
                 </li>
@@ -237,7 +237,7 @@
             Should you have any queries, please do not hesitate to contact us. Below are some ways to reach us.
             </p>
             <p>
-            <i class="fa fa-envelope"></i> customercare@gmail.com 
+            <i class="fa fa-envelope"></i> itms@customercare.com 
             </p>
             <p>
             <i class="fa fa-phone"></i> +60-12 345 6789
@@ -259,7 +259,7 @@
                         <button onclick="location.href='http://www.facebook.com'" class="btn"><i class="fa fa-facebook fa-3x"></i></button>
                         <button onclick="location.href='http://www.instagram.com'" class="btn"><i class="fa fa-instagram fa-3x"></i></button>
                         <button onclick="location.href='http://www.twitter.com'" class="btn"><i class="fa fa-twitter fa-3x"></i></button>
-                        <button onclick="location.href='http://www.github.com'" class="btn"><i class="fa fa-github fa-3x"></i></button>
+                        <button onclick="location.href='https://github.com/ak67517/tms'" class="btn"><i class="fa fa-github fa-3x"></i></button>
                         
                     </section>
                     <!-- Section: Social media -->

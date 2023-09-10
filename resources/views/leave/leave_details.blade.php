@@ -13,6 +13,10 @@
         <table class="table">
             <tbody>
                 <tr>
+                    <th>Leave ID:</th>
+                    <td>{{ $leave->leave_id }}</td>
+                </tr>
+                <tr>
                     <th>User ID:</th>
                     <td>{{ $leave->id }}</td>
                 </tr>
