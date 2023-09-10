@@ -42,7 +42,7 @@ public function store(Request $request)
         'entered' => $request->entered,
         'exited' => $request->exited,
         'current_inside' => $currentInside,
-        'user_id' => auth()->user()->id, // Assuming users are authenticated
+        'user_id' => auth()->user()->id, 
     ]);
     $data->save();
 

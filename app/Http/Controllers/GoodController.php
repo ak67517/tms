@@ -21,7 +21,6 @@ class GoodController extends Controller
 
     public function store(Request $request)
     {
-        // Validation (customize as needed)
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
@@ -43,7 +42,7 @@ class GoodController extends Controller
 
  public function update(Request $request, Good $good)
  {
-     // Validation (customize as needed)
+     
      $request->validate([
          'name' => 'required|string|max:255',
          'description' => 'required|string',

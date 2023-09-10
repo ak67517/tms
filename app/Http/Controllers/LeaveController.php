@@ -13,7 +13,7 @@ class LeaveController extends Controller
 
 public function index()
 {
-    $leaveApplications = Leave::where('id', auth()->user()->id)->get(); // Use 'id' for user ID
+    $leaveApplications = Leave::where('id', auth()->user()->id)->get(); 
 
     return view('leave.leave_form', compact('leaveApplications'));
 }
@@ -31,8 +31,7 @@ public function index()
 
     // Create and save the leave application
     $leave = new Leave();
-    // $leave->user_id = auth()->user()->id; // Associate the leave with the logged-in user
-    $leave->id = auth()->user()->id; // Use 'id' for user ID
+    $leave->id = auth()->user()->id; 
     $leave->date_of_application = $request->input('date_of_application');
     $leave->date_of_application = $request->input('date_of_return');
 
@@ -88,7 +87,7 @@ public function update(Request $request, $leave_id)
 
 public function leaveHistory()
 {
-    $leaveApplications = Leave::where('id', auth()->user()->id)->get(); // Use 'id' for user ID
+    $leaveApplications = Leave::where('id', auth()->user()->id)->get(); 
 
     return view('leave.leave_form', compact('leaveApplications'));
 }

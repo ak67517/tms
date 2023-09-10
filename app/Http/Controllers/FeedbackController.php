@@ -36,23 +36,6 @@ class FeedbackController extends Controller
 
 public function filter(Request $request)
 {
-    /*
-    $type = $request->input('type');
-
-    $query = Feedback::query();
-
-    // Check if type is provided and filter
-    if ($type) {
-        $query->where('type', $type);
-    }
-    
-
-    $feedback = $query->get();
-
-    return view('feedback.index', compact('feedback'));
-    */
-    
-
     $status = $request->input('status');
 
     $feedback = Feedback::query();
@@ -76,8 +59,7 @@ public function markAsRead(Feedback $feedback)
 
 public function show($feedback_id)
 {
-    $feedback = Feedback::where('feedback_id', $feedback_id)->first(); // Use 'feedback_id' as the column name
-
+    $feedback = Feedback::where('feedback_id', $feedback_id)->first(); 
     if (!$feedback) {
         // Handle the case where the feedback with the provided ID doesn't exist
         abort(404);

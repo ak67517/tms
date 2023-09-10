@@ -92,13 +92,4 @@ public function storeAssignment(Request $request)
     return redirect()->route('admin.assign-jobs')->with('success', 'Assignment saved successfully.');
 }
 
-/*
-public function index()
-{
-    $leaveApplications = Leave::where('leave_id', auth()->user()->id)->get(); // Use 'id' for user ID
-
-    return view('leave.leave_form', compact('leaveApplications'));
-}
-*/
-
 }
